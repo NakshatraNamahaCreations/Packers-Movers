@@ -1,0 +1,23 @@
+R_DEF: Internal format may change without notice
+local
+drawable assets_b2
+drawable assets_location
+drawable assets_pm
+drawable assets_s1
+drawable assets_s2
+drawable assets_s3
+drawable assets_s4
+drawable assets_s5
+drawable assets_sale
+drawable assets_tsucuss
+drawable node_modules_reactnativeelementdropdown_src_assets_close
+drawable node_modules_reactnativeelementdropdown_src_assets_down
+drawable node_modules_reactnativegoogleplacesautocomplete_images_powered_by_google_on_white
+drawable node_modules_reactnavigation_elements_src_assets_backicon
+drawable node_modules_reactnavigation_elements_src_assets_backiconmask
+drawable rn_edit_text_material
+integer react_native_dev_server_port
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style AppTheme
