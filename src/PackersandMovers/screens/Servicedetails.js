@@ -49,13 +49,17 @@ export default function Servicedetails({navigation}) {
         </View>
 
         {/* Render each item without animation */}
-
         <View style={styles.animatedItem}>
           {serviceData.map(ele => (
             <TouchableOpacity
               key={ele.serviceId}
               style={styles.servcontainer}
-              onPress={() => navigation.navigate('Location')}>
+              onPress={() =>
+                navigation.navigate(
+                  // ' Location'
+                  'Booking',
+                )
+              }>
               <Image
                 // source={{
                 //   uri: 'https://vijayahomeservices.b-cdn.net/Appliance%20Services/7.jpg',

@@ -6,15 +6,40 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Pressable,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Dropdown} from 'react-native-element-dropdown';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {bedRoom, kitchen, livingRoom, others} from '../global-data';
 
 const Step3 = () => {
   const [activeCategory, setActiveCategory] = useState('Living Room');
   const scrollViewRef = useRef(null);
-
+  const [activeLivItem, setActiveLivItem] = useState(null);
+  const [activeBathroomItem, setActiveBathroomItem] = useState(null);
+  const [activeKitchenItem, setActiveKitchenItem] = useState(null);
+  const [activeOthersItem, setActiveOthersItem] = useState(null);
+  const showLivingItem = item => {
+    setActiveLivItem(prevActiveItem =>
+      prevActiveItem === item.id ? null : item.id,
+    );
+  };
+  const showBedroomItem = item => {
+    setActiveBathroomItem(prevActiveItem =>
+      prevActiveItem === item.id ? null : item.id,
+    );
+  };
+  const showKitchenItem = item => {
+    setActiveKitchenItem(prevActiveItem =>
+      prevActiveItem === item.id ? null : item.id,
+    );
+  };
+  const showOthersItem = item => {
+    setActiveOthersItem(prevActiveItem =>
+      prevActiveItem === item.id ? null : item.id,
+    );
+  };
   const data = [
     {label: 'Item 1', value: '1'},
     {label: 'Item 2', value: '2'},
@@ -174,54 +199,245 @@ const Step3 = () => {
                 />
               )}
             /> */}
-            <Text>Table</Text>
-            <Text>TV/Monitor</Text>
-            <Text>Sofa</Text>
-            <Text>Chair</Text>
-            <Text>Table</Text>
-            <Text>TV/Monitor</Text>
-            <Text>Sofa</Text>
+            {livingRoom.map((liv, livIndex) => (
+              <View key={livIndex}>
+                <TouchableOpacity
+                  style={styles.subTextView}
+                  onPress={() => showLivingItem(liv)}>
+                  <Text
+                    style={[
+                      styles.subText,
+                      {color: activeLivItem === liv.id ? '#ff8c00' : '#353535'},
+                    ]}>
+                    {liv.name}{' '}
+                  </Text>
+                  <Ionicons
+                    name="chevron-down"
+                    size={14}
+                    style={{
+                      color: activeLivItem === liv.id ? '#ff8c00' : '#353535',
+                    }}
+                  />
+                </TouchableOpacity>
+                {activeLivItem === liv.id && (
+                  <>
+                    {liv.itemList?.map((il, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          backgroundColor: '#f9f9f9',
+                          borderTopColor: '#ebebeb',
+                          borderTopWidth: 1,
+                        }}>
+                        <View style={styles.subTextView}>
+                          <View>
+                            <Text style={styles.subText}>{il.itemName} </Text>
+                          </View>
+                          <TouchableOpacity
+                            // onPress={()=>handleAddToCar()}
+                            style={{
+                              borderWidth: 1,
+                              borderColor: '#ababab',
+                              padding: 5,
+                              borderRadius: 3,
+                            }}>
+                            <AntDesign name="plus" size={12} color="#ff8c00" />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    ))}
+                  </>
+                )}
+                <View style={styles.subTextBorder}></View>
+              </View>
+            ))}
           </View>
         </View>
 
         <View ref={bedroomRef} style={styles.categorySection}>
           <Text style={styles.sectionTitle}>Bedroom</Text>
           <View style={styles.itemContainer}>
-            <Text>Tables</Text>
-            <Text>Table</Text>
-            <Text>Mattress</Text>
-            <Text>Bed frame</Text>
-            <Text>Tables</Text>
-            <Text>Table</Text>
-            <Text>Mattress</Text>
-            <Text>Bed frame</Text>
+            {bedRoom.map((bed, bedIndex) => (
+              <View key={bedIndex}>
+                <TouchableOpacity
+                  style={styles.subTextView}
+                  onPress={() => showBedroomItem(bed)}>
+                  <Text
+                    style={[
+                      styles.subText,
+                      {
+                        color:
+                          activeBathroomItem === bed.id ? '#ff8c00' : '#353535',
+                      },
+                    ]}>
+                    {bed.name}{' '}
+                  </Text>
+                  <Ionicons
+                    name="chevron-down"
+                    size={14}
+                    style={{
+                      color:
+                        activeBathroomItem === bed.id ? '#ff8c00' : '#353535',
+                    }}
+                  />
+                </TouchableOpacity>
+                {activeBathroomItem === bed.id && (
+                  <>
+                    {bed.itemList?.map((bd, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          backgroundColor: '#f9f9f9',
+                          borderTopColor: '#ebebeb',
+                          borderTopWidth: 1,
+                        }}>
+                        <View style={styles.subTextView}>
+                          <View>
+                            <Text style={styles.subText}>{bd.itemName} </Text>
+                          </View>
+                          <TouchableOpacity
+                            style={{
+                              borderWidth: 1,
+                              borderColor: '#ababab',
+                              padding: 5,
+                              borderRadius: 3,
+                            }}>
+                            <AntDesign name="plus" size={12} color="#ff8c00" />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    ))}
+                  </>
+                )}
+                <View style={styles.subTextBorder}></View>
+              </View>
+            ))}
           </View>
         </View>
 
         <View ref={kitchenRef} style={styles.categorySection}>
           <Text style={styles.sectionTitle}>Kitchen</Text>
           <View style={styles.itemContainer}>
-            <Text>Fridge</Text>
-            <Text>Electrical</Text>
-            <Text>Cabinet</Text>
-            <Text>Fridge</Text>
-            <Text>Electrical</Text>
-            <Text>Cabinet</Text>
+            {kitchen.map((kitchen, kitchenIndex) => (
+              <View key={kitchenIndex}>
+                <TouchableOpacity
+                  style={styles.subTextView}
+                  onPress={() => showKitchenItem(kitchen)}>
+                  <Text
+                    style={[
+                      styles.subText,
+                      {
+                        color:
+                          activeKitchenItem === kitchen.id
+                            ? '#ff8c00'
+                            : '#353535',
+                      },
+                    ]}>
+                    {kitchen.name}{' '}
+                  </Text>
+                  <Ionicons
+                    name="chevron-down"
+                    size={14}
+                    style={{
+                      color:
+                        activeKitchenItem === kitchen.id
+                          ? '#ff8c00'
+                          : '#353535',
+                    }}
+                  />
+                </TouchableOpacity>
+                {activeKitchenItem === kitchen.id && (
+                  <>
+                    {kitchen.itemList?.map((kt, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          backgroundColor: '#f9f9f9',
+                          borderTopColor: '#ebebeb',
+                          borderTopWidth: 1,
+                        }}>
+                        <View style={styles.subTextView}>
+                          <View>
+                            <Text style={styles.subText}>{kt.itemName} </Text>
+                          </View>
+                          <TouchableOpacity
+                            style={{
+                              borderWidth: 1,
+                              borderColor: '#ababab',
+                              padding: 5,
+                              borderRadius: 3,
+                            }}>
+                            <AntDesign name="plus" size={12} color="#ff8c00" />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    ))}
+                  </>
+                )}
+                <View style={styles.subTextBorder}></View>
+              </View>
+            ))}
           </View>
         </View>
 
         <View ref={othersRef} style={styles.categorySection}>
           <Text style={styles.sectionTitle}>Others</Text>
           <View style={styles.itemContainer}>
-            <Text>Gunny bag</Text>
-            <Text>Vehicle</Text>
-            <Text>Plant</Text>
-            <Text>Gunny bag</Text>
-            <Text>Vehicle</Text>
-            <Text>Plant</Text>
-            <Text>Gunny bag</Text>
-            <Text>Vehicle</Text>
-            <Text>Plant</Text>
+            {others.map((other, otherIndex) => (
+              <View key={otherIndex}>
+                <TouchableOpacity
+                  style={styles.subTextView}
+                  onPress={() => showOthersItem(other)}>
+                  <Text
+                    style={[
+                      styles.subText,
+                      {
+                        color:
+                          activeOthersItem === other.id ? '#ff8c00' : '#353535',
+                      },
+                    ]}>
+                    {other.name}{' '}
+                  </Text>
+                  <Ionicons
+                    name="chevron-down"
+                    size={14}
+                    style={{
+                      color:
+                        activeOthersItem === other.id ? '#ff8c00' : '#353535',
+                    }}
+                  />
+                </TouchableOpacity>
+                {activeOthersItem === other.id && (
+                  <>
+                    {other.itemList?.map((oth, index) => (
+                      <View
+                        key={index}
+                        style={{
+                          backgroundColor: '#f9f9f9',
+                          borderTopColor: '#ebebeb',
+                          borderTopWidth: 1,
+                        }}>
+                        <View style={styles.subTextView}>
+                          <View>
+                            <Text style={styles.subText}>{oth.itemName} </Text>
+                          </View>
+                          <TouchableOpacity
+                            style={{
+                              borderWidth: 1,
+                              borderColor: '#ababab',
+                              padding: 5,
+                              borderRadius: 3,
+                            }}>
+                            <AntDesign name="plus" size={12} color="#ff8c00" />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    ))}
+                  </>
+                )}
+                <View style={styles.subTextBorder}></View>
+              </View>
+            ))}
           </View>
         </View>
       </ScrollView>
@@ -252,19 +468,42 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
   },
   categorySection: {
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    // paddingVertical: 20,
+    // paddingHorizontal: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ebebeb',
+    marginVertical: 15,
   },
   sectionTitle: {
     fontSize: 14,
-
+    borderBottomColor: '#ebebeb',
+    borderBottomWidth: 1,
     fontFamily: 'Poppins-Medium',
     color: 'black',
-    marginBottom: 10,
+    padding: 10,
+    // marginBottom: 10,
+  },
+  subTextView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  subText: {
+    // borderBottomColor: '#d9d9d9',
+    // borderBottomWidth: 1,
+    fontSize: 12,
+    fontFamily: 'Poppins-Regular',
+  },
+  subTextBorder: {
+    borderBottomColor: '#ebebeb',
+    borderBottomWidth: 1,
   },
   itemContainer: {
     // flexDirection: 'row',
     // flexWrap: 'wrap',
+    // padding: 10,
   },
   inputContainer: {
     flexDirection: 'row',
