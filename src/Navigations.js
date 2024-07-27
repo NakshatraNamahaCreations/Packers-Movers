@@ -53,6 +53,7 @@ import Splash from '../src/Splash';
 // } from './userapp';
 
 import {NavigationContainer} from '@react-navigation/native';
+import OrdersDetails from './PackersandMovers/screens/OrdersDetails';
 
 export default function Navigations() {
   const CustomHeaderTitle = () => (
@@ -139,6 +140,21 @@ export default function Navigations() {
               backgroundColor: '#f8f9fa', // Example background color
             },
           }}
+        />
+        <Stack.Screen
+          name="OrderDetails"
+          component={OrdersDetails}
+          options={{
+            headerShown: false,
+          }}
+          // options={{
+          //   headerShown: true,
+          //   headerTitle: Packersandmovers,
+          //   // Optional: Additional header styles
+          //   headerStyle: {
+          //     backgroundColor: '#f8f9fa', // Example background color
+          //   },
+          // }}
         />
         <Stack.Screen
           name="DropLocation"

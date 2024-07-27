@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Video from 'react-native-video';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import Svg, {Defs, Path} from 'react-native-svg';
+import Arrow2 from '../../../assets/Arrows-02.svg';
+import Arrow4 from '../../../assets/Arrow-04.svg';
 
 export default function Viewdetails({route}) {
   const deviceWidth = Dimensions.get('window').width;
@@ -313,14 +315,32 @@ export default function Viewdetails({route}) {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <AntDesign name={'star'} size={50} color="white" />
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 35,
+                    color: 'white',
+                    textAlign: 'center',
+                  }}>
+                  1
+                </Text>
+                {/* <AntDesign name={'star'} size={50} color="white" /> */}
               </View>
 
               <View>
                 <Text
                   style={{
                     fontFamily: 'Poppins-SemiBold',
-                    fontSize: 15,
+                    fontSize: 25,
+                    color: 'black',
+                    textAlign: 'center',
+                  }}>
+                  1
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 13,
                     color: 'black',
                   }}>
                   Trained Professional
@@ -328,24 +348,37 @@ export default function Viewdetails({route}) {
                 <Text
                   style={{
                     fontFamily: 'Poppins-Light',
-                    fontSize: 13,
+                    fontSize: 10,
                     color: 'black',
                   }}>
                   Trained Professional
                 </Text>
               </View>
             </View>
+            <View style={{position: 'absolute', left: 50, top: 50}}>
+              <Arrow2 width={220} height={90} />
+            </View>
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                marginTop: 50,
               }}>
               <View>
                 <Text
                   style={{
                     fontFamily: 'Poppins-SemiBold',
-                    fontSize: 15,
+                    fontSize: 25,
+                    color: 'black',
+                    textAlign: 'center',
+                  }}>
+                  2
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 13,
                     color: 'black',
                   }}>
                   Trained Professional
@@ -353,7 +386,7 @@ export default function Viewdetails({route}) {
                 <Text
                   style={{
                     fontFamily: 'Poppins-Light',
-                    fontSize: 13,
+                    fontSize: 10,
                     color: 'black',
                   }}>
                   Trained Professional
@@ -369,7 +402,143 @@ export default function Viewdetails({route}) {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <AntDesign name={'star'} size={50} color="white" />
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 35,
+                    color: 'white',
+                    textAlign: 'center',
+                  }}>
+                  2
+                </Text>
+                {/* <MaterialCommunityIcons
+                  name={'flower-poppy'}
+                  size={50}
+                  color="white"
+                /> */}
+              </View>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  width: 80,
+                  height: 80,
+                  borderRadius: 50,
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 35,
+                    color: 'white',
+                    textAlign: 'center',
+                  }}>
+                  3
+                </Text>
+                {/* <AntDesign name={'star'} size={50} color="white" /> */}
+              </View>
+              <View style={{position: 'absolute', left: 60, top: 50}}>
+                <Arrow2 width={220} height={90} />
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 25,
+                    color: 'black',
+                    textAlign: 'center',
+                  }}>
+                  3
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 13,
+                    color: 'black',
+                  }}>
+                  Trained Professional
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-Light',
+                    fontSize: 10,
+                    color: 'black',
+                  }}>
+                  Trained Professional
+                </Text>
+              </View>
+            </View>
+            <View style={{position: 'absolute', left: 50, top: -65}}>
+              <Arrow4 width={220} height={90} />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: 50,
+              }}>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 25,
+                    color: 'black',
+                    textAlign: 'center',
+                  }}>
+                  4
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 13,
+                    color: 'black',
+                  }}>
+                  Trained Professional
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-Light',
+                    fontSize: 10,
+                    color: 'black',
+                  }}>
+                  Trained Professional
+                </Text>
+              </View>
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  width: 80,
+                  height: 80,
+                  borderRadius: 50,
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'Poppins-SemiBold',
+                    fontSize: 35,
+                    color: 'white',
+                    textAlign: 'center',
+                  }}>
+                  4
+                </Text>
+                {/* <MaterialCommunityIcons
+                  name={'flower-poppy'}
+                  size={50}
+                  color="white"
+                /> */}
               </View>
             </View>
           </View>

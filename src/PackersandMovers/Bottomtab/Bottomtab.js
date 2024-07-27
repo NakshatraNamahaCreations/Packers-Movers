@@ -1,10 +1,10 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Home from '../screens/Home';
-import Orders from '../screens/Orders';
 import Profile from '../../Profile';
 import CustomTabBar from '../Bottomtab/CustomTabBar';
 import Services from '../Services'; // Assuming this is already imported
+import Orders from '../screens/Orders';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ export default function BottomTab() {
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Orders"
+        name="All orders"
         component={Orders}
         options={{headerShown: true}}
       />

@@ -174,6 +174,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const {width} = Dimensions.get('window');
 const TAB_WIDTH = width / 4; // Adjusted for four tabs
@@ -209,20 +210,48 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
           const isFocused = state.index === index;
-          let iconName;
+          let iconComponent;
 
           switch (route.name) {
             case 'Home':
-              iconName = 'home';
+              iconComponent = (
+                <MaterialCommunityIcons
+                  name="home"
+                  size={25}
+                  color={isFocused ? '#e91e63' : '#222'}
+                />
+              );
+              // iconName = 'home';
               break;
-            case 'Orders':
-              iconName = 'cart';
+            case 'All orders':
+              iconComponent = (
+                <FontAwesome5
+                  name="box-open"
+                  size={18}
+                  color={isFocused ? '#e91e63' : '#222'}
+                />
+              );
+              // iconName = 'cart';
               break;
             case 'Profile':
-              iconName = 'account';
+              iconComponent = (
+                <MaterialCommunityIcons
+                  name="account"
+                  size={25}
+                  color={isFocused ? '#e91e63' : '#222'}
+                />
+              );
+              // iconName = 'account';
               break;
             case 'Services':
-              iconName = 'cog'; // Example icon for Services tab
+              iconComponent = (
+                <MaterialCommunityIcons
+                  name="cog"
+                  size={25}
+                  color={isFocused ? '#e91e63' : '#222'}
+                />
+              );
+              // iconName = 'cog'; // Example icon for Services tab
               break;
 
             default:
@@ -234,11 +263,12 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
               key={route.key}
               onPress={() => handlePress(index)}
               style={styles.tab}>
-              <MaterialCommunityIcons
+              {iconComponent}
+              {/* <MaterialCommunityIcons
                 name={iconName}
                 size={25}
                 color={isFocused ? '#e91e63' : '#222'}
-              />
+              /> */}
             </TouchableOpacity>
           );
         })}

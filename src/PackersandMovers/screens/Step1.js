@@ -21,7 +21,7 @@ export default function Step1({navigation}) {
   const [activeCategory, setActiveCategory] = useState('Within city');
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
-
+  console.log('date', date);
   console.log('pickupLocation', pickupLocation);
   useEffect(() => {
     AsyncStorage.getItem('pickup').then(value => {
